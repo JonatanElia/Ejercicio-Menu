@@ -7,27 +7,33 @@ public class Main {
     }
     public static void menu (){
         int opcion;
-
+        boolean bandera=true;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Menu de opciones:");
-        System.out.println("1.Dado 2 20 rondas");
-        System.out.println("2.Dado 3 20 rondas");
-        System.out.println("3.Ejercicio IMC");
-        opcion = sc.nextInt();
-        switch (opcion){
-            case 1:
-                dados2();
-                break;
-            case 2:
-                dados3();
-                break;
-            case 3:
-                System.out.println(ejercicioIMC());
-                break;
-            default:
-                System.out.println("Valor invalido");
-                break;
-        }
+        do{
+            System.out.println("Menu de opciones:");
+            System.out.println("1.Dado 2 20 rondas");
+            System.out.println("2.Dado 3 20 rondas");
+            System.out.println("3.Ejercicio IMC");
+            System.out.println("4.Salir");
+            opcion = sc.nextInt();
+            switch (opcion) {
+                case 1:
+                    dados2();
+                    break;
+                case 2:
+                    dados3();
+                    break;
+                case 3:
+                    System.out.println(ejercicioIMC());
+                    break;
+                case 4:
+                    bandera=false;
+                    break;
+                default:
+                    System.out.println("Valor invalido");
+                    break;
+            }
+        }while (bandera);
     }
     public static void dados2 (){
         Random aleatorio = new Random();
