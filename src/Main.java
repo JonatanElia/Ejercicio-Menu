@@ -7,6 +7,7 @@ public class Main {
     }
     public static void menu (){
         int opcion;
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Menu de opciones:");
         System.out.println("1.Dado 2 20 rondas");
@@ -21,7 +22,7 @@ public class Main {
                 dados3();
                 break;
             case 3:
-                ejercicioIMC();
+                System.out.println(ejercicioIMC());
                 break;
             default:
                 System.out.println("Valor invalido");
@@ -106,7 +107,7 @@ public class Main {
             System.out.println("Tercer dado esta en la 3° posicion");
         }
     }
-    public static String[] ejercicioIMC (){
+    public static String ejercicioIMC (){
         Scanner sc = new Scanner(System.in);
         String situacion="";
         double peso, altura,IMC;
@@ -133,8 +134,7 @@ public class Main {
         }else if (IMC>50){
             situacion = "Obesidad extrema";
         }
-        System.out.println(situacion);
-        return null;
+        return situacion;
     }
 
 }
