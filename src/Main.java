@@ -6,15 +6,18 @@ public class Main {
         menu();
     }
     public static void menu (){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("pulse una tecla enter para continuar");
+        sc.nextLine();
         int opcion;
         boolean bandera=true;
-        Scanner sc = new Scanner(System.in);
         do{
             System.out.println("Menu de opciones:");
             System.out.println("1.Dado 2 20 rondas");
             System.out.println("2.Dado 3 20 rondas");
             System.out.println("3.Ejercicio IMC");
-            System.out.println("4.Salir");
+            System.out.println("4.Notas de estudiantes");
+            System.out.println("6.Salir");
             opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
@@ -27,6 +30,9 @@ public class Main {
                     System.out.println(ejercicioIMC());
                     break;
                 case 4:
+                    promedioNotasDeEstudiantes();
+                    break;
+                case 6:
                     bandera=false;
                     break;
                 default:
@@ -141,6 +147,30 @@ public class Main {
             situacion = "Obesidad extrema";
         }
         return situacion;
+    }
+    public static void promedioNotasDeEstudiantes(){
+        Scanner sc = new Scanner(System.in);
+        int numeroNotas,nota,numeroEstudiantes,promedio=0,sumaPromedio=0;
+        System.out.println("Ingrese número de estudiantes:");
+        numeroEstudiantes= sc.nextInt();
+        System.out.println("Ingrese número de notas:");
+        numeroNotas= sc.nextInt();
+        for (int i=1; i<=numeroEstudiantes; i++) {
+            System.out.println("\nEstudiante "+i);
+            for (int k=1; k<=numeroNotas; k++) {
+                System.out.println("Ingrese nota "+k+" de 10 a 50");
+                nota=sc.nextInt();
+                if(nota<=50 && nota>=10){
+                    promedio+=nota/k;
+                }else{
+                    System.out.println("El valor es invalido");
+                    k-=1;
+                }
+            }
+            System.out.println("El promedio del estudiante es:"+promedio);
+            sumaPromedio+=promedio/i;
+        }
+        System.out.println("El promedio de los estudiantes es: "+sumaPromedio);
     }
 
 }
