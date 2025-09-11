@@ -7,9 +7,8 @@ public class Main {
     }
     public static void menu (){
         Scanner sc = new Scanner(System.in);
-        System.out.println("pulse una tecla enter para continuar");
-        sc.nextLine();
-        int opcion;
+
+        int opcion,a;
         boolean bandera=true;
         do{
             System.out.println("Menu de opciones:");
@@ -17,6 +16,7 @@ public class Main {
             System.out.println("2.Dado 3 20 rondas");
             System.out.println("3.Ejercicio IMC");
             System.out.println("4.Notas de estudiantes");
+            System.out.println("5.Carrera");
             System.out.println("6.Salir");
             opcion = sc.nextInt();
             switch (opcion) {
@@ -31,6 +31,9 @@ public class Main {
                     break;
                 case 4:
                     promedioNotasDeEstudiantes();
+                    break;
+                case 5:
+                    carrera();
                     break;
                 case 6:
                     bandera=false;
@@ -171,6 +174,48 @@ public class Main {
             sumaPromedio+=promedio/i;
         }
         System.out.println("El promedio de los estudiantes es: "+sumaPromedio);
+    }
+    public static void carrera(){
+        Random aleatorio = new Random();
+        boolean carrera=true;
+        int corredor1,corredor2,contadorCorredor1=0,contadorCorredor2=0,momento=0;
+        do {
+            corredor1=aleatorio.nextInt((6-1)+1)+1;
+            corredor2=aleatorio.nextInt((6-1)+1)+1;
+            momento++;
+            if(corredor1==6||corredor2==6){
+                if(corredor1==6){
+                    contadorCorredor1-=2;
+                }
+                else{
+                    contadorCorredor1+=corredor1;
+                }
+                if(corredor2==6){
+                    contadorCorredor2-=2;
+                }
+                else {
+                    contadorCorredor2+=corredor2;
+                }
+            }else {
+                contadorCorredor1+=corredor1;
+                contadorCorredor2+=corredor2;
+            }
+            System.out.println("--En el "+momento+"° momento--");
+            System.out.println("El corredor 1 saco:"+corredor1);
+            System.out.println("El corredor 2 saco:"+corredor2);
+            System.out.println("El contador corredor 1 es:"+contadorCorredor1);
+            System.out.println("El contador corredor 2 es:"+contadorCorredor2);
+            if(contadorCorredor1>=50 || contadorCorredor2>=50){
+                if(contadorCorredor1>contadorCorredor2){
+                    System.out.println("Gana corredor 1");;
+                }else if(contadorCorredor1<contadorCorredor2){
+                    System.out.println("Gana corredor 2");;
+                }else{
+                    System.out.println("Empatan los dos corredores");
+                }
+                carrera=false;
+            }
+        }while(carrera);
     }
 
 }
